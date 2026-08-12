@@ -1,0 +1,39 @@
+generated: '2026-08-12'
+method: searched
+source: registry search
+package_count: 0
+official_package_count: 0
+packages: []
+note: >-
+  No first-party Episode Six client library exists on any public registry. Searched npm
+  (registry.npmjs.org search for "episodesix", "episode-six", "tritium-e6", "e6-sdk" —
+  no matching package), PyPI (pypi.org/pypi/episodesix/json → 404), RubyGems
+  (rubygems.org/api/v1/gems/episodesix.json → 404), and crates.io (0 results). The
+  company's GitHub organization github.com/episodesix exists (created 2025-08-25) but
+  publishes 0 public repositories, so there is no source-distributed SDK either. The
+  developer portal names no SDK, and the gated documentation may ship one to customers,
+  but nothing is publicly installable. No SDKs pointer is emitted.
+registries_checked:
+- registry: npm
+  found: false
+- registry: pypi
+  found: false
+  status: 404
+- registry: rubygems
+  found: false
+  status: 404
+- registry: crates.io
+  found: false
+- registry: github
+  found: false
+  detail: github.com/episodesix — 0 public repos
+third_party_observed:
+- kind: postman-collection
+  name: Episode Six API
+  url: https://www.postman.com/i-workspace/collection/18187141-4a4d16ca-03a3-41df-8ed6-5822d0ae15ce
+  official: false
+  note: >-
+    Public Postman collection named "Episode Six API" owned by an unverified third-party
+    workspace ("I Workspace"), last updated 2024-10-02, with baseUrl set to "/" and no
+    populated requests. It is not first-party and carries no contract, so no Postman
+    pointer is emitted.

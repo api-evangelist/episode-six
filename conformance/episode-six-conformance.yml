@@ -1,0 +1,100 @@
+generated: '2026-08-12'
+method: searched
+source: https://episodesix.com/platform/paymentsecurity
+note: >-
+  Compliance claims are the company's own published statements on its payment security page.
+  Protocol conformance is asserted only where a document was fetched and parsed. Nothing is
+  asserted about the TRITIUM REST API itself — its contract is behind an access-code gate,
+  so REST-level conformance (error format, pagination, idempotency) is unknown, not false.
+standards:
+- id: pci-dss-level-1
+  conforms: true
+  evidence: >-
+    "PCI DSS Level 1 Service Provider" stated on
+    https://episodesix.com/platform/paymentsecurity
+  source: provider-claim
+- id: soc2-type-ii
+  conforms: true
+  evidence: >-
+    "annual SOC 2 Type II assessment to validate the effectiveness of our internal security
+    controls" stated on https://episodesix.com/platform/paymentsecurity
+  source: provider-claim
+- id: gdpr
+  conforms: true
+  evidence: >-
+    "GDPR compliance framework as our global baseline for collecting and processing data"
+    stated on https://episodesix.com/platform/paymentsecurity
+  source: provider-claim
+- id: oauth2
+  conforms: true
+  evidence: >-
+    OAuth 2.0 authorization server serving authorize/token/register endpoints for the MCP
+    surface.
+  source: probed
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: true
+  evidence: >-
+    /.well-known/oauth-authorization-server returns 200 application/json with issuer,
+    authorization_endpoint, token_endpoint, grant_types_supported.
+  source: probed
+- id: rfc9728-oauth-protected-resource-metadata
+  conforms: true
+  evidence: >-
+    /.well-known/oauth-protected-resource returns 200 application/json with resource and
+    authorization_servers.
+  source: probed
+- id: rfc7636-pkce
+  conforms: true
+  evidence: 'code_challenge_methods_supported: [S256]'
+  source: probed
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: 'registration_endpoint: https://docs.episodesix.com/mcp/oauth/register'
+  source: probed
+- id: mcp
+  conforms: true
+  evidence: >-
+    JSON-RPC 2.0 endpoint at https://docs.episodesix.com/mcp returns a structured
+    invalid_token error to an unauthenticated tools/list, consistent with an MCP server
+    enforcing the MCP authorization spec.
+  source: probed
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: >-
+    /.well-known/security.txt returns 404 on episodesix.com and dev.episodesix.com, and an
+    HTML shell (not a document) on docs.episodesix.com.
+  source: probed
+- id: openid-connect
+  conforms: false
+  evidence: No /.well-known/openid-configuration document on any resolving host.
+  source: probed
+- id: oidc-discovery
+  conforms: false
+  evidence: See openid-connect.
+  source: probed
+- id: rfc9457-problem-details
+  conforms: unknown
+  evidence: >-
+    No public OpenAPI or error reference; the TRITIUM error envelope cannot be observed.
+  source: not-observable
+- id: rfc8594-sunset-header
+  conforms: unknown
+  evidence: No public deprecation policy and no observable API responses.
+  source: not-observable
+compliance_program:
+  published: true
+  url: https://episodesix.com/platform/paymentsecurity
+  certifications:
+  - PCI DSS Level 1 Service Provider
+  - SOC 2 Type II
+  frameworks:
+  - GDPR
+  governance: >-
+    Company states a Security and Compliance Steering Committee with C-suite participation
+    meets quarterly, and that it engages a global audit firm for regular external security
+    audits of production environments.
+  trust_center: false
+  trust_center_note: >-
+    No trust.episodesix.com or security.episodesix.com host resolves, and /trust and
+    /security both return 404 on the main site. The compliance posture is prose on a
+    marketing page, not a trust center with downloadable evidence.

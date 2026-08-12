@@ -1,0 +1,35 @@
+generated: '2026-08-12'
+method: probed
+source: https://docs.episodesix.com/.well-known/oauth-authorization-server
+docs: null
+docs_note: >-
+  No public scopes or permissions reference exists. The only scope Episode Six publishes
+  anywhere on a public surface is the one advertised in its MCP OAuth authorization-server
+  metadata. The TRITIUM platform API scope model, if it has one, is behind the docs gate.
+schemes:
+- name: MCPOAuth2
+  source: well-known/episode-six-oauth-authorization-server.json
+  issuer: https://docs.episodesix.com/mcp/oauth
+  applies_to: https://docs.episodesix.com/mcp
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://docs.episodesix.com/mcp/oauth/authorize
+    tokenUrl: https://docs.episodesix.com/mcp/oauth/token
+  - flow: clientCredentials
+    tokenUrl: https://docs.episodesix.com/mcp/oauth/token
+scopes:
+- scope: mcp:search
+  description: >-
+    Search the Episode Six TRITIUM developer documentation through the MCP server. This is
+    the single scope advertised in scopes_supported; it bounds the MCP surface to
+    documentation retrieval and grants no access to the payments platform.
+  flows:
+  - authorizationCode
+  - clientCredentials
+  sources:
+  - well-known/episode-six-oauth-authorization-server.json
+scope_count: 1
+x-evidence:
+  fetched: '2026-08-12'
+  url: https://docs.episodesix.com/.well-known/oauth-authorization-server
+  http_status: 200

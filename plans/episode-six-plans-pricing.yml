@@ -1,0 +1,27 @@
+generated: '2026-08-12'
+method: searched
+source: https://episodesix.com/
+plan_count: 0
+pricing_published: false
+pricing_url: null
+model: enterprise-contact-sales
+currency: null
+plans: []
+note: >-
+  Episode Six publishes no pricing whatsoever. https://episodesix.com/pricing returns 404,
+  there is no pricing entry anywhere in the site's own sitemap.xml (74 URLs, checked
+  2026-08-12), and no plans/tiers page exists on the developer portal. Access to the API and
+  to the documentation is obtained through a contact form at
+  https://episodesix.com/access-request ("Request access to our documentation and APIs"),
+  which is a sales motion, not a self-serve signup. This is the expected posture for a
+  bank-facing issuer processor sold on negotiated contracts, and it is recorded as an
+  explicit published-zero rather than omitted.
+evidence:
+- url: https://episodesix.com/pricing
+  status: 404
+- url: https://episodesix.com/sitemap.xml
+  status: 200
+  finding: no pricing or plans URL present
+- url: https://episodesix.com/access-request
+  status: 200
+  finding: contact-sales access request form

@@ -1,0 +1,22 @@
+generated: '2026-08-12'
+method: searched
+source: https://episodesix.com/platform/developers
+limit_count: 0
+documented: false
+limits: []
+response_headers: []
+exhaustion_status: null
+note: >-
+  No rate limits are published on any public Episode Six surface. The developer portal page
+  markets "real-time RESTful API processing" and "enterprise-grade performance" but states no
+  quota, no throttling window, and no rate-limit response headers. The API reference that
+  would carry them is behind the access-code gate at docs.episodesix.com, so no limit could
+  be read and none was observed on a live response (the platform host is not publicly
+  identified). Recorded as an explicit zero rather than omitted.
+evidence:
+- url: https://episodesix.com/platform/developers
+  status: 200
+  finding: no rate limit documented
+- url: https://docs.episodesix.com/
+  status: 200
+  finding: access-code gate; reference not readable

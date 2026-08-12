@@ -1,0 +1,51 @@
+generated: '2026-08-12'
+method: probed
+source: https://docs.episodesix.com/mcp
+status: published
+server:
+  name: episode-six-docs
+  transport: http
+  url: https://docs.episodesix.com/mcp
+  scope: documentation-search
+  description: >-
+    A Model Context Protocol server Episode Six serves from its own documentation host. It
+    exposes the TRITIUM developer documentation to agents. It is not a TRITIUM platform
+    (card issuing / ledger) MCP server — the single advertised OAuth scope is mcp:search,
+    which bounds it to documentation retrieval.
+authentication:
+  required: true
+  gated: true
+  protocol: OAuth 2.1 / RFC 9728 protected resource
+  authorization_servers:
+  - https://docs.episodesix.com/mcp/oauth
+  scopes:
+  - mcp:search
+  metadata:
+    authorization_server: well-known/episode-six-oauth-authorization-server.json
+    protected_resource: well-known/episode-six-oauth-protected-resource.json
+tools: []
+tools_note: >-
+  NOT DISCOVERABLE ANONYMOUSLY. A JSON-RPC 2.0 tools/list POST to
+  https://docs.episodesix.com/mcp returns HTTP 401 with
+  {"error":"invalid_token","error_description":"No authorization provided"}. The live tool
+  set and per-tool inputSchema require an authenticated introspection. Episode Six publishes
+  no llms.txt (the docs host 307-redirects /llms.txt to /login), so there is no published
+  tool list to fall back on either. No tools are recorded rather than guessed.
+probes:
+- url: https://docs.episodesix.com/mcp
+  method: POST tools/list
+  status: 401
+  body: '{"error":"invalid_token","error_description":"No authorization provided"}'
+- url: https://docs.episodesix.com/mcp/sse
+  method: POST tools/list
+  status: 307
+  body: redirect to /login
+- url: https://docs.episodesix.com/api/mcp
+  method: POST tools/list
+  status: 307
+  body: redirect to /login
+x-evidence:
+  fetched: '2026-08-12'
+  server_confirmed: true
+  tools_enumerated: false
+  reason: auth-gated

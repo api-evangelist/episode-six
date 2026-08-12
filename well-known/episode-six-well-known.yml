@@ -1,0 +1,102 @@
+generated: '2026-08-12'
+method: probed
+source: https://docs.episodesix.com/.well-known/
+summary: >-
+  Two real machine-readable documents are served from the Episode Six documentation host:
+  OAuth 2.0 Authorization Server Metadata (RFC 8414) and OAuth 2.0 Protected Resource
+  Metadata (RFC 9728). Both back the MCP server at https://docs.episodesix.com/mcp. No
+  security.txt, no OpenID Connect discovery, and no API catalog are served on any host.
+caveat: >-
+  docs.episodesix.com is a single-page documentation app that answers HTTP 200 with an HTML
+  shell for most unknown paths, including /.well-known/agent-card.json and
+  /.well-known/security.txt. Those 200s are NOT documents and are recorded as misses. Only
+  the two entries with content_type application/json below returned real parseable JSON.
+hosts:
+- host: https://docs.episodesix.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    document: true
+    file: episode-six-oauth-authorization-server.json
+    standard: RFC 8414
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    content_type: application/json
+    document: true
+    file: episode-six-oauth-protected-resource.json
+    standard: RFC 9728
+  - path: /.well-known/oauth-protected-resource/mcp
+    status: 200
+    content_type: application/json
+    document: true
+    note: Identical body to /.well-known/oauth-protected-resource; not saved separately.
+  - path: /.well-known/security.txt
+    status: 200
+    document: false
+    note: HTML single-page-app shell, not an RFC 9116 document. Treated as a miss.
+  - path: /.well-known/openid-configuration
+    status: 200
+    document: false
+    note: HTML single-page-app shell, not OIDC discovery. Treated as a miss.
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    document: false
+    note: HTML single-page-app shell. Treated as a miss.
+  - path: /.well-known/agent-card.json
+    status: 200
+    document: false
+    note: HTML single-page-app shell, not an A2A AgentCard. Treated as a miss.
+  - path: /.well-known/agent.json
+    status: 200
+    document: false
+    note: HTML single-page-app shell, not an A2A AgentCard. Treated as a miss.
+  - path: /.well-known/api-catalog
+    status: 404
+    document: false
+- host: https://episodesix.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    document: false
+  - path: /.well-known/openid-configuration
+    status: 404
+    document: false
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    document: false
+  - path: /.well-known/api-catalog
+    status: 404
+    document: false
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    document: false
+  - path: /.well-known/agent-card.json
+    status: 404
+    document: false
+  - path: /.well-known/agent.json
+    status: 404
+    document: false
+- host: https://dev.episodesix.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    document: false
+  - path: /.well-known/agent-card.json
+    status: 404
+    document: false
+  - path: /.well-known/agent.json
+    status: 404
+    document: false
+hosts_not_resolving:
+- api.episodesix.com
+- developer.episodesix.com
+- sandbox.episodesix.com
+- status.episodesix.com
+- trust.episodesix.com
+- security.episodesix.com
+x-evidence:
+  fetched: '2026-08-12'
+  documents_found: 2
+  security_txt: false
+  agent_card: false

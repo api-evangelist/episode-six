@@ -1,23 +1,162 @@
 aid: episode-six
 name: Episode Six
-description: 'Episode Six is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Episode Six is a global payment technology company founded in 2015 by John
+  Mitchell, Chermaine Hu and Futeh Kao that supplies banks, fintechs and brands with a
+  cloud-native card issuing and ledger management platform marketed as TRITIUM. The
+  platform is described by the company as an API-first open architecture delivering
+  real-time RESTful API processing for credit, debit, prepaid, commercial, installment
+  and virtual card programs alongside a parallel ledger supporting virtual accounts,
+  revolving credit, installments, loans, interest-bearing and term deposits, multi-currency
+  and negative balance accounts. Episode Six operates in 45+ countries with staff in 20
+  countries, and states it is a PCI DSS Level 1 Service Provider that is SOC 2 Type II
+  audited and uses GDPR as its global data baseline. Its API documentation is published
+  at docs.episodesix.com behind an access-code gate, so no public OpenAPI is available.'
+image: https://episodesix.com/hubfs/Home%20Page%20Featured%20Image%20Oct2025.png
 url: https://raw.githubusercontent.com/api-evangelist/episode-six/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment
 specificationVersion: '0.20'
 created: '2026-08-12'
 modified: '2026-08-12'
 tags:
 - Company
-apis: []
+- Payments
+- Card Issuing
+- Issuer Processing
+- Ledger
+- Banking
+- Financial Services
+- Embedded Finance
+- FinTech
+- Virtual Accounts
+- Virtual Cards
+- Credit
+- Prepaid
+- Multi-Currency
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: episode-six-tritium-platform-api
+  name: Episode Six TRITIUM Platform API
+  description: 'The TRITIUM platform API is Episode Six''s real-time RESTful interface for
+    card issuing, issuer processing and ledger management — card program setup, account and
+    ledger operations, transaction processing and product configuration. Episode Six
+    markets it as an "API-first open platform architecture" with a "vast, intuitive payments
+    API library." The reference is served from docs.episodesix.com, which is gated behind an
+    access code obtained through the company''s access-request form, so no OpenAPI, base URL
+    or authentication reference is publicly observable.'
+  humanURL: https://docs.episodesix.com/
+  x-base-url-status: not-published
+  x-base-url-note: 'Episode Six does not publish an API base URL on any public page. The
+    documentation host docs.episodesix.com 307-redirects every path to /login, so the real
+    host is not observable without an access code. Recorded as missing rather than guessed.'
+  tags:
+  - Payments
+  - Card Issuing
+  - Issuer Processing
+  - Ledger
+  properties:
+  - type: Documentation
+    url: https://docs.episodesix.com/
+  - type: DeveloperPortal
+    url: https://episodesix.com/platform/developers
+  - type: SignUp
+    url: https://episodesix.com/access-request
+- aid: episode-six-docs-mcp
+  name: Episode Six Documentation MCP Server
+  description: 'A Model Context Protocol server published by Episode Six on its own
+    documentation host at https://docs.episodesix.com/mcp, exposing the TRITIUM developer
+    documentation to agents. The endpoint answers a JSON-RPC tools/list with HTTP 401
+    invalid_token, and advertises OAuth 2.0 authorization-server metadata (RFC 8414) at
+    /.well-known/oauth-authorization-server plus protected-resource metadata (RFC 9728),
+    with a single scope of mcp:search, PKCE S256, and dynamic client registration.'
+  humanURL: https://docs.episodesix.com/
+  baseURL: https://docs.episodesix.com/mcp
+  tags:
+  - MCP
+  - Documentation
+  - Agents
+  properties:
+  - type: MCPServer
+    url: mcp/episode-six-mcp.yml
+  - type: OAuthScopes
+    url: scopes/episode-six-scopes.yml
+  - type: Authentication
+    url: authentication/episode-six-authentication.yml
 common:
+- type: DomainSecurity
+  url: security/episode-six-domain-security.yml
 - type: Website
+  url: https://episodesix.com/
+- type: DeveloperPortal
+  url: https://episodesix.com/platform/developers
+- type: Documentation
+  url: https://docs.episodesix.com/
+- type: SignUp
+  url: https://episodesix.com/access-request
+- type: Support
+  url: https://episodesix.com/contact-us
+- type: Blog
+  url: https://buzz.episodesix.com/
+- type: BlogRSS
+  url: https://buzz.episodesix.com/rss.xml
+- type: PrivacyPolicy
+  url: https://episodesix.com/privacy-policy
+- type: CookiePolicy
+  url: https://episodesix.com/cookie-policy
+- type: Careers
+  url: https://episodesix.com/company/careers
+- type: Newsroom
+  url: https://episodesix.com/newsroom
+- type: Compliance
+  url: https://episodesix.com/platform/paymentsecurity
+- type: Conformance
+  url: conformance/episode-six-conformance.yml
+- type: MCPServer
+  url: mcp/episode-six-mcp.yml
+- type: OAuthScopes
+  url: scopes/episode-six-scopes.yml
+- type: Authentication
+  url: authentication/episode-six-authentication.yml
+- type: WellKnown
+  url: well-known/episode-six-well-known.yml
+- type: LLMsTxt
+  url: llms/episode-six-llms.txt
+- type: Packages
+  url: packages/episode-six-packages.yml
+- type: Plans
+  url: plans/episode-six-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/episode-six-rate-limits.yml
+- type: Lifecycle
+  url: lifecycle/episode-six-lifecycle.yml
+- type: ForgeGlobalListing
   url: https://forgeglobal.com/episode-six_stock/
+x-enrichment:
+  date: '2026-08-12'
+  status: minimal
+  artifacts_added: 11
+  pass: local-v1
+x-coverage:
+  state: gated
+  reason: sales-gate
+  detail: >-
+    The TRITIUM API reference at docs.episodesix.com answers every path with an "Access
+    Restricted — provide your access code" screen and 307-redirects docs.json, llms.txt and
+    every deep path to /login, with the only route in being the "Request access to our
+    documentation and APIs" contact-sales form at episodesix.com/access-request.
+  evidence:
+    - url: https://docs.episodesix.com/docs.json
+      status: 307
+    - url: https://docs.episodesix.com/llms.txt
+      status: 307
+    - url: https://docs.episodesix.com/
+      status: 200
+    - url: https://episodesix.com/access-request
+      status: 200
+  checked: '2026-08-12'

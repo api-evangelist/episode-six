@@ -1,0 +1,43 @@
+generated: '2026-08-12'
+method: searched
+source: https://episodesix.com/
+versioning:
+  scheme: null
+  current: null
+  docs: null
+  note: >-
+    No public versioning policy. The API version scheme is not stated on the developer
+    portal and the reference is gated.
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: >-
+    No public deprecation policy, no RFC 8594 Sunset/Deprecation header documentation. No
+    Deprecation pointer is emitted.
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    The developer portal advertises "24/7 support" and the platform pages claim
+    enterprise-grade reliability, but no numeric uptime target or SLA document is published.
+status_page: null
+status_page_note: >-
+  No status page found. status.episodesix.com does not resolve (NXDOMAIN), and no status,
+  uptime or incident-history URL appears in the site's sitemap.xml. No StatusPage pointer is
+  emitted.
+changelog: null
+changelog_note: >-
+  No dated product/API changelog. buzz.episodesix.com is a marketing blog and newsroom (RSS
+  at /rss.xml, 200) with narrative posts, not release notes, so no ChangeLog artifact or
+  pointer is emitted.
+deprecated_operations: []
+evidence:
+- url: https://status.episodesix.com
+  status: 0
+  finding: DNS does not resolve
+- url: https://episodesix.com/sitemap.xml
+  status: 200
+  finding: no status, changelog, SLA, or deprecation URL present
+- url: https://buzz.episodesix.com/rss.xml
+  status: 200
+  finding: marketing blog feed, not release notes
