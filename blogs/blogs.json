@@ -1,0 +1,21 @@
+{
+  "repo": "episode-six",
+  "feeds": [
+    {
+      "source": "https://episodesix.com/contact-us",
+      "feed_url": "https://episodesix.com/contact-us",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://buzz.episodesix.com/",
+      "feed_url": "https://buzz.episodesix.com/rss.xml",
+      "title": "",
+      "saved": 1,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 1,
+  "fetched": "2026-08-15T12:22:01Z"
+}
