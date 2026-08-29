@@ -11,6 +11,17 @@ description: 'Episode Six is a global payment technology company founded in 2015
   countries, and states it is a PCI DSS Level 1 Service Provider that is SOC 2 Type II
   audited and uses GDPR as its global data baseline. Its API documentation is published
   at docs.episodesix.com behind an access-code gate, so no public OpenAPI is available.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://episodesix.com/hubfs/Home%20Page%20Featured%20Image%20Oct2025.png
 url: https://raw.githubusercontent.com/api-evangelist/episode-six/refs/heads/main/apis.yml
 x-type: company
