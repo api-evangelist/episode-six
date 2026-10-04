@@ -45,6 +45,10 @@ x-tier-reason: enrichment
 specificationVersion: '0.23'
 created: '2026-08-12'
 modified: '2026-08-12'
+x-docs-platform: mintlify
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-10-03
+x-docs-hosting: vercel
 tags:
 - Company
 - Payments
@@ -52,7 +56,7 @@ tags:
 - Issuer Processing
 - Ledger
 - Banking
-- Financial-Services
+- Financial Services
 - Embedded Finance
 - Fintech
 - Virtual Accounts
@@ -75,6 +79,7 @@ tags_raw:
 - Credit
 - Prepaid
 - Multi-Currency
+- Financial-Services
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
